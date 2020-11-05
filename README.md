@@ -4,13 +4,14 @@ Simple String Boot app implementing the assignment.
 
 Inside the project's directory :
 
-######Build with ./gradlew build
+###### Build with ./gradlew build
 
-######Run tests with  ./gradlew test
+###### Run tests with  ./gradlew test
 
-######Run the application. ./gradlew bootRun
+###### Run the application. ./gradlew bootRun
 
 Endpoints:
+
  */task* - returning the topologically sorted tasks as json array of tasks
  
  */task/bash* - returning topologically sorted tasks concatenated as a bash script
