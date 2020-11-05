@@ -2,15 +2,18 @@
 
 Simple String Boot app implementing the assignment.
 
-Inside the project directory :
+Inside the project's directory :
 
-Build with ./gradlew build
-Run tests with  ./gradlew test
-Run the application. ./gradlew bootRun
+######Build with ./gradlew build
+
+######Run tests with  ./gradlew test
+
+######Run the application. ./gradlew bootRun
 
 Endpoints:
- /task - returning the topologically sorted tasks as json array of tasks
- /task/bash - returning topologically sorted tasks concatenated as a bash script
+ */task* - returning the topologically sorted tasks as json array of tasks
+ 
+ */task/bash* - returning topologically sorted tasks concatenated as a bash script
 
 Both endpoints accept a json object with tasks as described by the assignment.
 
