@@ -29,8 +29,8 @@ public class Graph {
 
     public List<Task> topologicalSort() throws ValidationException {
 
-        Map<String, Integer> inAdjMap = generateAdjDegree();
-        Queue<String> queue = new LinkedList<>();
+        final Map<String, Integer> inAdjMap = generateAdjDegree();
+        final Queue<String> queue = new LinkedList<>();
         int visitedVertices = 0;
 
         //collect all vertices with in adjacency == 0
@@ -39,11 +39,11 @@ public class Graph {
                 queue.add(el);
             }
         }
-        List<Task> res = new ArrayList<>();
+        final List<Task> res = new ArrayList<>();
         while (!queue.isEmpty()) {
             String current = queue.poll();
             res.add(tasksMap.get(current));
-            List<Vertex> adj = getAdjVertices(current);
+            final List<Vertex> adj = getAdjVertices(current);
 
             //decrease with 1 the degree of all the adjacent of the current vertex
             if(Objects.nonNull(adj)) {
@@ -64,7 +64,7 @@ public class Graph {
     }
 
     private Map<String, Integer> generateAdjDegree() {
-        Map<String, Integer> inAdj = new HashMap<>();
+        final Map<String, Integer> inAdj = new HashMap<>();
         for (var key : adjVertices.keySet()) {
             for(var adjacent : adjVertices.get(key)) {
                 Integer count = inAdj.get(adjacent);
@@ -83,8 +83,8 @@ public class Graph {
     }
 
     private void addEdge(String name1, String name2) {
-        Vertex v1 = new Vertex(name1);
-        Vertex v2 = new Vertex(name2);
+        final Vertex v1 = new Vertex(name1);
+        final Vertex v2 = new Vertex(name2);
         if(Objects.isNull(adjVertices.get(v2))) {
             addVertex(name2);
         }

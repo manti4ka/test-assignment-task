@@ -12,18 +12,6 @@ import static org.junit.Assert.assertEquals;
 
 public class GraphTest {
 
-    private Task generateTask(String name, String ... requires) {
-        final Task task = new Task();
-        task.setName(name);
-        task.setCommand("random" + name);
-        List<String> r = new ArrayList<>();
-        for(var el : requires) {
-            r.add(el);
-        }
-        task.setRequires(r);
-        return task;
-    }
-
 
     @Test
     public void testNoTask() throws ValidationException {
@@ -38,7 +26,7 @@ public class GraphTest {
     @Test
     public void testOneTask() throws ValidationException {
         List<Task> tasks = new ArrayList<>();
-        tasks.add(generateTask("task-1"));
+        tasks.add(TestData.generateTask("task-1"));
 
         Graph testGraph  = new Graph(tasks);
         List<Task> res = testGraph.topologicalSort();
@@ -51,9 +39,9 @@ public class GraphTest {
     @Test
     public void testThreeTasks() throws ValidationException {
         List<Task> tasks = new ArrayList<>();
-        tasks.add(generateTask("task-1"));
-        tasks.add(generateTask("task-2", "task-3"));
-        tasks.add(generateTask("task-3", "task-1"));
+        tasks.add(TestData.generateTask("task-1"));
+        tasks.add(TestData.generateTask("task-2", "task-3"));
+        tasks.add(TestData.generateTask("task-3", "task-1"));
         Graph testGraph  = new Graph(tasks);
         List<Task> res = testGraph.topologicalSort();
 
@@ -67,9 +55,9 @@ public class GraphTest {
     @Test
     public void testThreeTasksInOrder() throws ValidationException {
         List<Task> tasks = new ArrayList<>();
-        tasks.add(generateTask("task-1"));
-        tasks.add(generateTask("task-3", "task-1"));
-        tasks.add(generateTask("task-2", "task-3"));
+        tasks.add(TestData.generateTask("task-1"));
+        tasks.add(TestData.generateTask("task-3", "task-1"));
+        tasks.add(TestData.generateTask("task-2", "task-3"));
         Graph testGraph  = new Graph(tasks);
         List<Task> res = testGraph.topologicalSort();
 
@@ -82,10 +70,10 @@ public class GraphTest {
     @Test
     public void testFourTasks() throws ValidationException {
         List<Task> tasks = new ArrayList<>();
-        tasks.add(generateTask("task-1"));
-        tasks.add(generateTask("task-2", "task-3"));
-        tasks.add(generateTask("task-3", "task-1"));
-        tasks.add(generateTask("task-4", "task-2", "task-3"));
+        tasks.add(TestData.generateTask("task-1"));
+        tasks.add(TestData.generateTask("task-2", "task-3"));
+        tasks.add(TestData.generateTask("task-3", "task-1"));
+        tasks.add(TestData.generateTask("task-4", "task-2", "task-3"));
         Graph testGraph  = new Graph(tasks);
 
         List<Task> res = testGraph.topologicalSort();
@@ -99,10 +87,10 @@ public class GraphTest {
     @Test
     public void testFourTasksSwapped() throws ValidationException {
         List<Task> tasks = new ArrayList<>();
-        tasks.add(generateTask("task-1"));
-        tasks.add(generateTask("task-2", "task-3"));
-        tasks.add(generateTask("task-3", "task-1"));
-        tasks.add(generateTask("task-4",  "task-3", "task-2"));
+        tasks.add(TestData.generateTask("task-1"));
+        tasks.add(TestData.generateTask("task-2", "task-3"));
+        tasks.add(TestData.generateTask("task-3", "task-1"));
+        tasks.add(TestData.generateTask("task-4",  "task-3", "task-2"));
         Graph testGraph  = new Graph(tasks);
 
         List<Task> res = testGraph.topologicalSort();
@@ -116,9 +104,9 @@ public class GraphTest {
     @Test(expected= ValidationException.class)
     public void testInvalidInput() throws ValidationException {
         List<Task> tasks = new ArrayList<>();
-        tasks.add(generateTask("task-1", "task-2"));
-        tasks.add(generateTask("task-2", "task-3"));
-        tasks.add(generateTask("task-3", "task-1"));
+        tasks.add(TestData.generateTask("task-1", "task-2"));
+        tasks.add(TestData.generateTask("task-2", "task-3"));
+        tasks.add(TestData.generateTask("task-3", "task-1"));
 
         Graph testGraph  = new Graph(tasks);
         testGraph.topologicalSort();

@@ -15,14 +15,14 @@ public class TaskService {
     public final static String NEW_LINE = "\n";
 
     public List<Task> getTopologicalSort(List<Task> tasks) throws ValidationException {
-        Graph graph = new Graph(tasks);
+        final Graph graph = new Graph(tasks);
         return graph.topologicalSort();
     }
 
     public byte[] getBashWithTopologicalSort(List<Task> tasks) throws ValidationException {
 
-        List<Task> res = getTopologicalSort(tasks);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        final List<Task> res = getTopologicalSort(tasks);
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         String content =  res.stream().map(x -> x.getCommand())
                 .reduce(START_LINE + NEW_LINE + NEW_LINE,
                         (acc, element) ->  acc + element + NEW_LINE);
