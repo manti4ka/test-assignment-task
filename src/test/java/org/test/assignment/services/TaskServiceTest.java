@@ -25,7 +25,7 @@ public class TaskServiceTest {
 
         List<Task> tasks = new ArrayList<>();
         tasks.add(TestData.generateTask("task-1"));
-        List<Task> res = taskService.getTopologicalSort(tasks);
+        List<TaskResponse> res = taskService.getTopologicalSort(tasks);
 
         assertEquals(res.size(), 1);
     }

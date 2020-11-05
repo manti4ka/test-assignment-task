@@ -1,6 +1,7 @@
-package org.test.assignment;
+package org.test.assignment.func;
 
 import org.junit.Test;
+import org.test.assignment.TestData;
 import org.test.assignment.custom.ValidationException;
 import org.test.assignment.func.Graph;
 import org.test.assignment.services.Task;

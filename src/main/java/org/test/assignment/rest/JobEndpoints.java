@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.test.assignment.custom.ValidationException;
 import org.test.assignment.services.JobRequest;
 import org.test.assignment.services.Task;
+import org.test.assignment.services.TaskResponse;
 import org.test.assignment.services.TaskService;
 
 import java.io.ByteArrayOutputStream;
@@ -19,7 +20,7 @@ public class JobEndpoints {
     private TaskService taskService;
 
     @PostMapping(value = "/task", headers = "content-type=application/json")
-    public List<Task> processTasks(@RequestBody JobRequest jobRequest) throws ValidationException {
+    public List<TaskResponse> processTasks(@RequestBody JobRequest jobRequest) throws ValidationException {
         return taskService.getTopologicalSort(jobRequest.getTasks());
     }
 
